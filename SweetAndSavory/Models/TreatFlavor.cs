@@ -17,3 +17,4 @@ namespace SweetAndSavory.Models
 
     public virtual ICollection<TreatFlavor> JoinEntities { get; }
   }
+}
