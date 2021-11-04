@@ -1,20 +1,11 @@
-using System.Collections.Generic;
-
 namespace SweetAndSavory.Models
 {
-  public class Treat
+  public class TreatFlavor
   {
-    public Treat()
-    {
-      this.JoinEntities = new HashSet<TreatFlavor>();
-    }
-
+    public int TreatFlavorId { get; set; }
     public int TreatId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-
-    public virtual ApplicationUser User { get; set; }
-
-    public virtual ICollection<TreatFlavor> JoinEntities { get; }
+    public int FlavorId { get; set; }
+    public virtual Treat Treat { get; set; }
+    public virtual Flavor Flavor { get; set; }
   }
 }
