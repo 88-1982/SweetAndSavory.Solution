@@ -1,8 +1,35 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Welcome to the To Pierre's Sweet and Savory Shop!</h1>
+
+<h2>List of Flavors</h2>
+@if (ViewBag.Flavors.Count != 0)
+{
+@foreach (var flavor in ViewBag.Flavors)
+{
+    <li>@Html.ActionLink($"{flavor.Name}", "Details", "Flavors", new { id = flavor.FlavorId }) </li>
+}
+}
+else
+{
+<p>No flavors added.</p>
+}
+<h2>List of Treats</h2>
+@if (ViewBag.Treats.Count != 0)
+{
+@foreach (var treat in ViewBag.Treats)
+{
+    <li>@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId }) </li>
+}
+}
+else
+{
+<p>No treats added.</p>
+}
+</br>
+
+<p>@Html.ActionLink("Treats page", "Index", "Treats")</p>
+<p>@Html.ActionLink("Flavors page", "Index", "Flavors")</p>
+<p>@Html.ActionLink("Sign up/Sign in", "Index", "Account")</p>
