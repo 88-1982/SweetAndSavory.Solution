@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetAndSavory.Models.Treat
+
+<h2>Treat Details</h2>
+<h3>@Html.DisplayNameFor(Model => Model.Description): @Html.DisplayNameFor(Model => Model.Description)</h3>
+
+@if (Model.JoinEntities.Count == 0)
+{
+  <p>This treat does not belong to any categories</p>
+}
+else
+{
+  
+}
+  <h4>Flavor this treat belongs to:</h4>
+  <ul>
+  @foreach (var join in Model.JoinEntities)
+  {
+    <li>@join.Flavor.Name</li>
+  @using (Html.BeginForm("DeleteTreat","Treat"))
+  {
+      @Html.Hidden("joinId",@join.TreatFlavorId)
+      <input type="submit" value="Delete this flavor this treat"/>
+    }
+  } 
+  </ul> 
+}
+
+<p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit treat", "Edit", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Delete treat", "Delete", new { id = Model.TreatId })</p>
